@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View} from 'react-native';
+import {AppRegistry, FlatList, Text, View} from 'react-native';
 
 export default class Reminders extends React.Component{
     constructor(props){
@@ -18,6 +18,7 @@ export default class Reminders extends React.Component{
         return(
             <View>
                 <Text>{this.state.reminders}</Text>
+
             </View>
         );
     }

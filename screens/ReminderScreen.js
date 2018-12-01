@@ -11,12 +11,13 @@ import {
   View,
 } from 'react-native';
 import Reminders from '../components/Reminders';
+import AddReminderButton from '../components/AddReminderButton'
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
 dict = null;
-dict = [{key: "this", value: "that"}];
+dict = [{key: "do", value: "time"}];
 // dict.push({key: 'what', value: "time"});
 
 
@@ -26,11 +27,11 @@ export default class ReminderScreen extends React.Component{
       <View style={styles.container}>
         <Text>Reminders</Text>
         <FlatList data={dict} 
-          renderItem={({item}) => return {<Text style={styles.item}>{item.key}</Text> 
-                                  <Text style={styles.item}>{item.value}</Text>}}/>
+          renderItem={({item}) => <Text style={styles.item}>{item.key} at {item.value}</Text>}/>
 
         <Reminders reminders=''/>
         <Reminders />
+        <AddReminderButton />
 
       </View> 
     );
