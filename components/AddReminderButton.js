@@ -47,6 +47,13 @@ export default class AddReminderButton extends React.Component{
             <View>
 
                 <ScrollView contentContainerStyle={styles.contentContainer}>
+                    {globalMap.map((val, key) => 
+                        <View key={key} >
+                            <Text>{val.key}</Text>
+                            <Text>{val.value}</Text>
+                        </View>
+                        )}
+
                 </ScrollView>
 
                 <Text style={{height: 20}}>Set a new reminder below</Text>
