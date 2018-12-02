@@ -35,16 +35,11 @@ export default class ReminderScreen extends React.Component{
                 setTimeout({this.alert},{item.value});
               </script>
           </Text>}/>
-
         <AddReminderButton />
-        <Text> ?</Text>
       </View> 
     );
   }
 }
-
-//AppRegistry.registerComponent('ReminderScreen', () => ReminderScreen)
-
 
 const styles = StyleSheet.create({
   container: {
