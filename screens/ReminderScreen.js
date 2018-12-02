@@ -29,12 +29,7 @@ export default class ReminderScreen extends React.Component{
     return(
       <View style={styles.container}>
         <Text>Reminders</Text>
-        <FlatList data={globalMap} 
-          renderItem={({item}) => <Text style={styles.item}>{item.key} in {item.value} seconds
-              <script>
-                setTimeout({this.alert},{item.value});
-              </script>
-          </Text>}/>
+
         <AddReminderButton />
       </View> 
     );
