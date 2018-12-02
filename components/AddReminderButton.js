@@ -1,26 +1,64 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import {AppRegistry, Button, StyleSheet, Text, TextInput, TouchableHighlight, View} from 'react-native';
 // import dict from '../screens/ReminderScreen';
+import {globalMap} from '../constants/global';
+
+
 
 export default class AddReminderButton extends React.Component{
     static defaultProps = {
-        reminders: 'No Reminders set'
+        reminders: 'No Reminders set',
     }
+    constructor(props){
+        super(props);
+        this.state = {
+            reminder: 'do nothing',
+            rtime: '1'
+        }
+    }
+    
+    onChangeReminder(value){
+        this.setState({reminder: value});
+    }
+    onChangeTime(value){
+        this.setState({rtime: value});
+    }
+    startTimer(){
+        setTimeout(this.alarm, this.state.rtime);
+    }
+
     onPress(){
-        // dict.push({key: , value: });
+        globalMap.push({key: this.state.reminder, value: this.state.rtime});
+        startTimer();
     }
+
 
     render(){
         return(
             <View>
-                <TouchableHighlight
+
+                <Text>Set a new reminder below</Text>
+                <TextInput
+                    placeholder="Reminder"
+                    value={this.state.reminder}
+                    style={{borderColor: 'gray', borderWidth:1}}
+                    onChangeText={(value) => this.onChangeReminder(value)}
+                />
+                <TextInput
+                    placeholder="Time"
+                    value={this.state.rtime}
+                    style={{borderColor: 'gray', borderWidth:1}}
+                    onChangeText={(value) => this.onChangeTime(value)}
+                />
+                <Button
+                    title="Add"
                     style={styles.container}
                     onPress={this.onPress}
                     underlayColor="blue">
                     <View>
                         <Text>Add</Text>
                     </View>
-                </TouchableHighlight>
+                </Button>
             </View>
         );
     }

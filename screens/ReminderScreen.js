@@ -13,26 +13,31 @@ import {
 import Reminders from '../components/Reminders';
 import AddReminderButton from '../components/AddReminderButton'
 import { WebBrowser } from 'expo';
-
 import { MonoText } from '../components/StyledText';
+import { globalMap } from '../constants/global';
 
-dict = null;
-dict = [{key: "do", value: "time"}];
-// dict.push({key: 'what', value: "time"});
+// globalMap.push({key: 'what', value: "time"});
+
 
 
 export default class ReminderScreen extends React.Component{
+
+  alert(){
+    console.log("Alert passed")
+  }
   render(){
     return(
       <View style={styles.container}>
         <Text>Reminders</Text>
-        <FlatList data={dict} 
-          renderItem={({item}) => <Text style={styles.item}>{item.key} at {item.value}</Text>}/>
+        <FlatList data={globalMap} 
+          renderItem={({item}) => <Text style={styles.item}>{item.key} in {item.value} seconds
+              <script>
+                setTimeout({this.alert},{item.value});
+              </script>
+          </Text>}/>
 
-        <Reminders reminders=''/>
-        <Reminders />
         <AddReminderButton />
-
+        <Text> ?</Text>
       </View> 
     );
   }
@@ -56,25 +61,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30,
   },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
   codeHighlightText: {
     color: 'rgba(96,100,109, 0.8)',
   },
@@ -82,12 +68,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.05)',
     borderRadius: 3,
     paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
   },
   tabBarInfoContainer: {
     position: 'absolute',

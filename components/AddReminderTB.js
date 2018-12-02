@@ -24,13 +24,14 @@ export default class AddReminderTB extends React.Component{
                 <TextInput
                     placeholder="Reminder"
                     value={this.state.reminders}
-                    onChangeText={() => this.onChangeReminder(value)}
+                    onChangeText={(value) => this.onChangeReminder(value)}
                 />
                 <TextInput
                     placeholder="Time"
-                    value={this.state.reminders}
-                    onChangeText={() => this.onChangeTime(value)}
+                    value={this.state.rtime}
+                    onChangeText={(value) => this.onChangeTime(value)}
                 />
+                
             </View>
         );
     }
