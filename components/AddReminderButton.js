@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Button, ListView, StyleSheet, Text, TextInput, TouchableHighlight, View} from 'react-native';
+import {AppRegistry, Button, ListView, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, View} from 'react-native';
 import {globalMap} from '../constants/global';
 
 export default class AddReminderButton extends React.Component{
@@ -10,6 +10,7 @@ export default class AddReminderButton extends React.Component{
         this.state = {
             reminders: Object.keys(globalMap),
             reminder: 'do nothing',
+            items: items,
             rtime: '1',
         }
     }
@@ -37,6 +38,7 @@ export default class AddReminderButton extends React.Component{
     onPress(state){
         globalMap.push({key: state.state.reminder, value: state.state.rtime});
         state.state.reminders = Object.keys(globalMap);
+        state.setState({items: state.dsinit.cloneWithRows(Object.keys(globalMap))});
         state.startTimer();
     }
 
@@ -44,6 +46,8 @@ export default class AddReminderButton extends React.Component{
         return(
             <View>
 
+                <ScrollView contentContainerStyle={styles.contentContainer}>
+                </ScrollView>
 
                 <Text style={{height: 20}}>Set a new reminder below</Text>
                 <TextInput
@@ -79,4 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  contentContainer: {
+    paddingVertical: 20
+  }
 });
